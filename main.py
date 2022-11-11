@@ -6,7 +6,7 @@ import sys
 
 root = tk.Tk()
 root.withdraw()
-file_path=filedialog.askopenfilenames()
+file_path=filedialog.askopenfilename()
 
 gauth = GoogleAuth()
 gauth.LoadCredentialsFile("mycreds.txt")
@@ -28,7 +28,7 @@ drive = GoogleDrive(gauth)
 upload_file_list = [file_path]
 
 for upload_file in upload_file_list:
-    if sys.argv[1] == "--root":
+    if sys.argv[0:] == "--root":
         gfile = drive.CreateFile({'parents': [{'id': '1lPPfyqRfls-Gpty_gMK7svniLmFEZwy8'}]})
     else:
         gfile = drive.CreateFile({'parents': [{'id': '1R8FL_8S0gXWI7w7wG0dYiMGJnZdomzfx'}]})
